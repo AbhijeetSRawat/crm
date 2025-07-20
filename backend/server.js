@@ -13,7 +13,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "*",
+    origin: "https://crm-mauve-one.vercel.app",
     methods: ["GET", "POST"]
   }
 });
@@ -36,8 +36,7 @@ app.use(compression());
 app.use(morgan('combined'));
 app.use(cors({
   origin: [
-    /^http:\/\/localhost:\d+$/,
-    /^http:\/\/127\.0\.0\.1:\d+$/
+    "https://crm-mauve-one.vercel.app",
   ],
   credentials: true,
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
