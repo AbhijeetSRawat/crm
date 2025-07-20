@@ -19,7 +19,7 @@ const io = socketIo(server, {
 });
 
 // MongoDB connection
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://rawatab2:PPuUDOBsnDTxO3Gx@cluster0.pq8abwk.mongodb.net/crm-calling';
+const MONGODB_URI = process.env.MONGODB_URI ;
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
