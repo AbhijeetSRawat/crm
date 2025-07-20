@@ -13,7 +13,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "https://crm-mauve-one.vercel.app/api",
+    origin: "https://crm-mauve-one.vercel.app",
     methods: ["GET", "POST"]
   }
 });
