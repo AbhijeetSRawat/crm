@@ -1,8 +1,8 @@
 import io from 'socket.io-client';
 
 // API Configuration
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://crm-sily.onrender.com/api';
-const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || 'https://crm-sily.onrender.com';
+const API_BASE_URL = process.env.REACT_APP_API_URL 
+const SOCKET_URL = process.env.REACT_APP_SOCKET_URL 
 
 // Socket.IO connection
 let socket = null;
