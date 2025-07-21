@@ -36,7 +36,7 @@ app.use(compression());
 app.use(morgan('combined'));
 app.use(cors({
   origin: [
-    "*",
+    "https://crm-mauve-one.vercel.app",
   ],
   credentials: true,
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
