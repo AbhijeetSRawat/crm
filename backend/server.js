@@ -13,13 +13,13 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "https://crm-mauve-one.vercel.app",
+    origin: "http://localhost:3000",
     methods: ["GET", "POST"]
   }
 });
 
 // MongoDB connection
-const MONGODB_URI = process.env.MONGODB_URI ;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://rawatab2:PPuUDOBsnDTxO3Gx@cluster0.pq8abwk.mongodb.net/crm-calling';
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -34,15 +34,15 @@ mongoose.connect(MONGODB_URI, {
 app.use(helmet());
 app.use(compression());
 app.use(morgan('combined'));
-const corsOptions = {
-  origin: "https://crm-mauve-one.vercel.app",
+app.use(cors({
+  origin: [
+    /^http:\/\/localhost:\d+$/,
+    /^http:\/\/127\.0\.0\.1:\d+$/
+  ],
   credentials: true,
-  methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"]
-};
-
-app.use(cors(corsOptions));
-
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Rate limiting
 const limiter = rateLimit({
