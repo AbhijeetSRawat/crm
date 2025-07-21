@@ -34,14 +34,15 @@ mongoose.connect(MONGODB_URI, {
 app.use(helmet());
 app.use(compression());
 app.use(morgan('combined'));
-app.use(cors({
-  origin: [
-    "https://crm-mauve-one.vercel.app",
-  ],
+const corsOptions = {
+  origin: "https://crm-mauve-one.vercel.app",
   credentials: true,
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+  methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+};
+
+app.use(cors(corsOptions));
+
 
 // Rate limiting
 const limiter = rateLimit({

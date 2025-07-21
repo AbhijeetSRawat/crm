@@ -21,7 +21,7 @@ class AuthService {
         body: JSON.stringify(body)
       });
 
-      
+
 
       if (response.success) {
         this.token = response.data.token;
